@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base resets ─────────────────────────────────────────────── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  body {
+    @apply bg-neutral-50 text-neutral-800 font-sans antialiased;
+    min-height: 100dvh;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold leading-tight tracking-tight text-neutral-900;
+  }
+
+  p {
+    @apply text-neutral-600 leading-relaxed;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent-500 ring-offset-2;
+  }
+}
+
+/* ─── Component layer ─────────────────────────────────────────── */
+@layer components {
+  /* Card */
+  .card {
+    @apply bg-white rounded-2xl border border-neutral-200 shadow-card;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-5 py-2.5 rounded-xl
+           bg-accent-600 text-white text-sm font-medium
+           border border-accent-700
+           shadow-sm
+           hover:bg-accent-700
+           disabled:opacity-50 disabled:cursor-not-allowed
+           focus-visible:ring-accent-500;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+           px-5 py-2.5 rounded-xl
+           bg-transparent text-neutral-700 text-sm font-medium
+           border border-neutral-200
+           hover:bg-neutral-100 hover:text-neutral-900
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Label */
+  .label {
+    @apply text-xs font-medium text-neutral-500 uppercase tracking-widest;
+  }
+}
+
+/* ─── Utility layer ───────────────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(1rem, 1fr)
+      [content-start] min(100% - 2rem, 48rem) [content-end]
+      minmax(1rem, 1fr) [full-end];
+  }
+
+  .content-grid > * {
+    grid-column: content;
+  }
+}

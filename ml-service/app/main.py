@@ -1,7 +1,16 @@
+import logging
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import health
+from app.api.routes import audio
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
 
 app = FastAPI(
     title="AED ML Service",
@@ -23,6 +32,18 @@ app.add_middleware(
 
 # ─── Routers ──────────────────────────────────────────────────────────────
 app.include_router(health.router, tags=["Health"])
+app.include_router(audio.router, prefix="/audio", tags=["Audio"])
 
-# Future routers — to be added in Phase 3:
-# app.include_router(inference.router, prefix="/inference", tags=["Inference"])
+
+# ─── Startup ──────────────────────────────────────────────────────────────
+@app.on_event("startup")
+async def startup() -> None:
+    """
+    Ensure the processed/ directory exists before any requests are handled.
+    Converted WAVs are retained here for Phase 3 YAMNet inference.
+    """
+    processed_dir = "processed"
+    os.makedirs(processed_dir, exist_ok=True)
+    logging.getLogger(__name__).info(
+        "Processed audio directory ready: %s", os.path.abspath(processed_dir)
+    )

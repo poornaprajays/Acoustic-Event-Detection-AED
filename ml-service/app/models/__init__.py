@@ -1,1 +1,4 @@
-"""Pydantic request/response schemas — to be populated in Phase 3."""
+"""Pydantic request/response schemas for audio processing."""
+from app.models.audio import AudioMetadataResponse
+
+__all__ = ["AudioMetadataResponse"]

@@ -1,1 +1,4 @@
-"""Shared utility helpers — audio format conversion, logging helpers (Phase 2+)."""
+"""Shared utility helpers."""
+from app.utils.errors import AudioProcessingError
+
+__all__ = ["AudioProcessingError"]

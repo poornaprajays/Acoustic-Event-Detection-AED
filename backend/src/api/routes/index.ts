@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import healthRouter from './health.route';
+import audioRouter from './audio.route';
 
 /**
  * Root API router.
@@ -10,9 +11,9 @@ import healthRouter from './health.route';
 const router = Router();
 
 router.use('/health', healthRouter);
+router.use('/audio', audioRouter);
 
 // Future routes — to be added in subsequent phases:
-// router.use('/upload', uploadRouter);
 // router.use('/analyses', analysisRouter);
 
 export default router;

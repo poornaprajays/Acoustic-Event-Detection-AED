@@ -1,2 +1,1 @@
-// Stub barrel — business logic services will be added in Phase 2+
-export {};
+export { processAudio, streamAudio } from './mlClient.service';

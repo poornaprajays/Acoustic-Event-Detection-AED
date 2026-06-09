@@ -1,2 +1,2 @@
-// Stub barrel — custom hooks will be added in Phase 2
-export {};
+export { useUpload } from './useUpload';
+export type { UseUploadReturn } from './useUpload';

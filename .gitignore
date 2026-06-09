@@ -66,3 +66,9 @@ docker/data/
 # Misc
 .cache/
 .turbo/
+
+# Phase 2: Audio upload directories
+# backend/uploads/ — relay copies, deleted after forwarding to ML service
+# ml-service/processed/ — retained WAVs for Phase 3 YAMNet inference
+backend/uploads/
+ml-service/processed/

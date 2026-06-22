@@ -1,2 +1,3 @@
 
- AED 
+ AED  - Acoustic Event Detection
+ 
